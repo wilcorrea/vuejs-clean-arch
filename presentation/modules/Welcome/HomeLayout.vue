@@ -1,13 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="HomeLayout">
+    <div id="nav">
+      <RouterLink to="/">Home</RouterLink>
+      |
+      <RouterLink to="/about">About</RouterLink>
+    </div>
+    <RouterView />
   </div>
-  <router-view/>
 </template>
 
+<script>
+export default {
+  name: 'HomeLayout'
+}
+</script>
+
 <style lang="scss">
-#app {
+#HomeLayout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
