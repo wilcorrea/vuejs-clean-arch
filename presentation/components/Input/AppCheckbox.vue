@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { id, classNames } from './helper'
-import { UserEvent } from '../../../app/definitions'
+import { UserEvent } from '../../../app/env'
 
 export default defineComponent({
   name: 'AppCheckbox',
@@ -48,7 +48,7 @@ export default defineComponent({
   setup (props, { emit }) {
     return {
       id: id(),
-      classNames: classNames(props),
+      classNames: computed(() => classNames(props)),
       update: ($event: UserEvent<HTMLInputElement>) => emit('update:modelValue', $event.target.checked)
     }
   }

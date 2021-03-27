@@ -7,7 +7,10 @@ import 'presentation/styles/scss/main.scss'
 
 import './registerServiceWorker'
 
-createApp(App)
-  .use(store)
+const app = createApp(App)
+
+app.use(store)
   .use(router)
   .mount('#app')
+
+export default app

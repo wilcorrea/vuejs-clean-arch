@@ -1,7 +1,7 @@
-import Container from '../core/Container'
-import { ContainerDefinition } from '../definitions'
+import definitions from './definitions'
 
-import AddCategory from 'src/General/Category/UseCases/AddCategory'
+import Container from '../core/Container'
+import { ContainerDefinition } from '../env'
 
 let container: Container
 
@@ -36,16 +36,7 @@ export function resolve (alias: string): unknown {
 export function instance (): Container {
   if (!container) {
     container = new Container()
-
-    container.set('http', () => undefined)
-
-    container.addDefinition('CategoryRepository', () => import('src/General/Category/Adapters/Http/CategoryRepository'))
-
-    container.addDefinition('AddCategory', async function (container: Container): Promise<unknown> {
-      const CategoryRepository = await container.resolve('CategoryRepository')
-      // @ts-ignore
-      return new AddCategory(new CategoryRepository())
-    })
+    definitions(container)
   }
   return container
 }

@@ -1,23 +1,26 @@
 <template>
   <div class="CategoryForm container is-max-desktop">
-    <AppForm @submit.prevent="addCategory">
+    <AppForm @submit.prevent="addCategory(datum)">
       <AppText
         name="name"
         v-model="datum.name"
         v-bind="schema.name.attrs"
-        :error="schema.description.error"
+        v-on="schema.name.listeners"
+        :errors="schema.name.errors"
       />
       <AppCheckbox
         name="active"
         v-model="datum.active"
         v-bind="schema.active.attrs"
-        :error="schema.active.error"
+        v-on="schema.active.listeners"
+        :errors="schema.active.errors"
       />
       <AppTextarea
         name="description"
         v-model="datum.description"
         v-bind="schema.description.attrs"
-        :error="schema.description.error"
+        v-on="schema.description.listeners"
+        :errors="schema.description.errors"
       />
 
       <template #buttons>
@@ -46,52 +49,21 @@
 </template>
 
 <script lang="ts">
-import { reactive, defineComponent } from 'vue'
-import { resolve } from 'app/container'
-import { ErrorInfo, Schema } from 'app/definitions'
+import { defineComponent } from 'vue'
+import { Datum, Schema } from 'app/env'
 
-import AppForm from 'presentation/components/Container/AppForm.vue'
-import AppText from 'presentation/components/Input/AppText.vue'
-import AppCheckbox from 'presentation/components/Input/AppCheckbox.vue'
-import AppTextarea from 'presentation/components/Input/AppTextarea.vue'
-import AppButton from 'presentation/components/Button/AppButton.vue'
-
-import AddCategory from 'src/General/Category/UseCases/AddCategory'
-import { schemata } from 'src/General/Category/Schema/Category'
+import 'presentation/components/form'
+import { schemata, data } from 'src/General/Category/Schema/Category'
+import { useAddCategory } from './services'
 
 export default defineComponent({
   name: 'CategoryForm',
-  components: {
-    AppForm,
-    AppText,
-    AppCheckbox,
-    AppTextarea,
-    AppButton
-  },
   setup () {
-    const datum = reactive({
-      name: '',
-      active: true,
-      description: ''
-    })
+    const datum: Datum = data()
 
-    const schema: Record<string, Schema> = reactive(schemata())
+    const schema: Record<string, Schema> = schemata(datum)
 
-    const addCategory = async function () {
-      const useCase = await resolve('AddCategory') as AddCategory
-      let errors: ErrorInfo[] = []
-      try {
-        useCase.handle(datum)
-        window.alert('Show')
-      } catch (e) {
-        if (Array.isArray(e.errors)) {
-          errors = e.errors
-        }
-      }
-      for (const detail of errors) {
-        schema[detail.field].errors = detail.errors
-      }
-    }
+    const addCategory = useAddCategory(schema)
 
     return {
       datum,

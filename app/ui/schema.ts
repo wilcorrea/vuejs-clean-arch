@@ -1,20 +1,37 @@
-import { Schema, UserEvent } from '../definitions'
+import { reactive } from 'vue'
+import { Schema, UserEvent } from '../env'
 
 /**
  * @param {Record<string, unknown>} attrs
  * @return {Schema}
  */
 export function create (attrs: Record<string, unknown>): Schema {
-  return {
+  const listeners: Record<string, ((event: Event | UserEvent<HTMLInputElement>) => void)[]> = {}
+  const schema = {
     attrs,
-    listeners: {},
+    listeners,
     errors: [],
     on (event: string, handler: (event: Event | UserEvent<HTMLInputElement>) => void): Schema {
-      if (!this.listeners[event]) {
-        this.listeners[event] = []
+      if (!listeners[event]) {
+        listeners[event] = []
       }
-      this.listeners[event].push(handler)
+      listeners[event].push(handler)
       return this
     }
   }
+  return reactive(schema)
 }
+
+/**
+ * @param {Record<string, Schema>} schemata
+ * @return void
+ */
+export function reset (schemata: Record<string, Schema>): void {
+  Object.values(schemata).forEach((schema) => schema.errors = [])
+}
+
+/**
+ * @param {Record<string, unknown>} payload
+ * @return {Record<string, unknown>}
+ */
+export const observable = (payload: Record<string, unknown>) => reactive(payload)

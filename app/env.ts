@@ -1,12 +1,15 @@
-// create a new type HTMLElementEvent that has a target of type you pass
-// type T must be a HTMLElement (e.g. HTMLTextAreaElement extends HTMLElement)
-import Container from './core/Container'
+import { Vue } from 'vue-class-component'
 
+/**
+ * @typedef {UserEvent}
+ */
 export type UserEvent<T extends HTMLElement> = Event & {
   target: T
   // probably you might want to add the currentTarget as well
   currentTarget: T
 }
+
+export interface ContainerForm extends Vue {}
 
 /**
  * @typedef {ContainerDefinition}

@@ -1,4 +1,4 @@
-import { ContainerDefinition, ContainerProperty } from '../definitions'
+import { ContainerDefinition, ContainerProperty } from '../env'
 
 /**
  * @class {Container}

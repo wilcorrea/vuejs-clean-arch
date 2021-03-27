@@ -1,18 +1,41 @@
-import { create } from 'app/ui/schema'
-import { Schema } from 'app/definitions'
+import { create, observable } from 'app/ui/schema'
+import { Datum, Schema } from 'app/env'
 
-export const schemata = (): Record<string, Schema> => {
+/**
+ * @return {Record<string, Schema>}
+ */
+export const schemata = (datum: Datum): Record<string, Schema> => {
+  const name = create({
+    label: 'Name',
+    width: 80
+  })
+
+  const active = create({
+    label: 'Active',
+    width: 20
+  }).on('change', function () {
+    datum.description = datum.active ? 'now is active' : 'now is not'
+    active.attrs.label = datum.active ? 'Now is active' : 'Now is not'
+  })
+
+  const description = create({
+    label: 'Description'
+  })
+
   return {
-    name: create({
-      label: 'Name',
-      width: 80
-    }),
-    active: create({
-      label: 'Active',
-      width: 20
-    }),
-    description: create({
-      label: 'Description'
-    })
+    name,
+    active,
+    description
   }
+}
+
+/**
+ * @return {Datum}
+ */
+export const data = (): Datum => {
+  return observable({
+    name: '',
+    active: true,
+    description: ''
+  })
 }
