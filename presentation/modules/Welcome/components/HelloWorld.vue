@@ -121,19 +121,20 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
 
 import HelloLink from './HelloLink.vue'
 
 @Options({
   name: 'HelloWorld',
-  components: { HelloLink }
+  components: { HelloLink },
+  props: {
+    message: {
+      type: String,
+      default: ''
+    }
+  }
 })
 export default class HelloWorld extends Vue {
-  @Prop({
-    type: String,
-    default: ''
-  })
   private message!: string
 }
 </script>

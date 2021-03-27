@@ -16,6 +16,11 @@
       "webpack-env",
       "jest"
     ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "lib": [
       "esnext",
       "dom",
@@ -23,6 +28,13 @@
       "scripthost"
     ]
   },
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "app/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
   "exclude": [
     "node_modules"
   ]

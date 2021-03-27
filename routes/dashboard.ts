@@ -5,6 +5,9 @@ import Router from 'app/core/Router'
  */
 export default function (router: Router): void {
   router
-    .route('/', () => import('presentation/modules/Dashboard/DashboardLayout.vue'))
+    .route('/dashboard', () => import('presentation/modules/Dashboard/DashboardLayout.vue'))
     .setName('dashboard')
+    .addChildren(function (router: Router) {
+      router.on('', () => import('presentation/views/Dashboard/CategoryForm.vue'))
+    })
 }

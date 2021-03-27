@@ -1,10 +1,21 @@
 <template>
-  <div>{{ $options.name }}</div>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: 'DashboardLayout'
+  /**
+   * Component name
+   */
+  name: 'DashboardLayout',
+  /**
+   * Component setup
+   */
+  setup (): Record<string, unknown> {
+    return {}
+  }
 }
 </script>
 

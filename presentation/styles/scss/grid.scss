@@ -1,0 +1,33 @@
+@import "_variables";
+
+.grid {
+  min-width: 260px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+
+  > .cell {
+    width: 100%;
+    grid-column: auto / span 100;
+
+    @for $index from 1 through 100 {
+      &.width-#{$index} {
+        grid-column: auto / span #{$index};
+      }
+    }
+
+    @for $index from 1 through 10 {
+      &.height-#{$index} {
+        grid-row: auto / span #{$index};
+      }
+    }
+  }
+
+  @media (max-width: $break) {
+    &:not(.no-break) .cell {
+      grid-column: auto / span 100 !important;
+      grid-row: auto / span 1;
+    }
+  }
+}
+

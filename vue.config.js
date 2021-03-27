@@ -1,6 +1,15 @@
 const path = require('path')
 
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+            @import "presentation/styles/scss/__variables.scss";
+            `
+      }
+    }
+  },
   configureWebpack: {
     entry: {
       app: path.resolve(__dirname, 'app', 'main.ts')

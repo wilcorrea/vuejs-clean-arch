@@ -11,35 +11,48 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue, setup } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { Options, Vue } from 'vue-class-component'
 
 @Options({
-  name: 'HelloLink'
+  name: 'HelloLink',
+  props: {
+    href: {
+      type: String,
+      required: true
+    },
+    target: {
+      type: String,
+      default: '_blank'
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    noMargin: {
+      type: Boolean,
+      default: false
+    }
+  }
 })
 export default class HelloLink extends Vue {
-  @Prop({
-    type: String,
-    required: true
-  })
+  /**
+   * @private
+   */
   private href!: string
 
-  @Prop({
-    type: String,
-    default: '_blank'
-  })
+  /**
+   * @private
+   */
   private target!: string
 
-  @Prop({
-    type: String,
-    default: ''
-  })
+  /**
+   * @private
+   */
   private label!: string
 
-  @Prop({
-    type: Boolean,
-    default: false
-  })
+  /**
+   * @private
+   */
   private noMargin!: boolean
 }
 </script>

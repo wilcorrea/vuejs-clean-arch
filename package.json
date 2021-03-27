@@ -11,11 +11,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bulma": "^0.9.2",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
-    "vue-property-decorator": "^9.1.2",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
