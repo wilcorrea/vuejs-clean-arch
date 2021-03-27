@@ -2,7 +2,7 @@
   <form class="grid gap-col-5 gap-row-10">
     <slot />
     <div class="cell">
-      <div class="padding">
+      <div class="buttons padding is-relative">
         <slot name="buttons" />
       </div>
     </div>

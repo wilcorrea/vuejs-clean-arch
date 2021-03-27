@@ -1,3 +1,6 @@
+// Bulma Import
+@import '~bulma';
+
 @import "grid";
 
 hr {
@@ -14,6 +17,3 @@ hr {
 .padding, .field {
   padding: 5px 10px;
 }
-
-// Bulma Import
-@import '~bulma';

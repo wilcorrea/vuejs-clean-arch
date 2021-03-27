@@ -1,12 +1,12 @@
-import CategoryModel from '../CategoryModel'
+import Category from '../Domain/Category'
 
 /**
  * @interface {CategoryRepository}
  */
 export default interface CategoryRepository {
   /**
-   * @param {CategoryModel} record
+   * @param {Category} category
    * @return {boolean}
    */
-  create (record: CategoryModel): boolean
+  create (category: Category): boolean
 }

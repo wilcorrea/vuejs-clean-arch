@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <h4>SignIn</h4>
+    <hr>
     <button @click="$router.push('/dashboard')">
       Sign In
     </button>
