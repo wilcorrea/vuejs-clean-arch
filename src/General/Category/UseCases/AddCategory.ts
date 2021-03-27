@@ -22,7 +22,7 @@ export default class AddCategory {
     }
 
     // TODO: show how the reactivity can be explored
-    schema.name.attrs.width = schema.name.attrs.width === 80 ? 10 : 80
+    schema.name.attrs.width = schema.name.attrs.width === 80 ? 50 : 80
 
     if (!category.name) {
       throw new ValidationError([

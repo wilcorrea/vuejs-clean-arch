@@ -4,23 +4,23 @@
       <AppText
         name="name"
         v-model="datum.name"
-        v-bind="schema.name.attrs"
-        v-on="schema.name.listeners"
-        :errors="schema.name.errors"
+        v-bind="schemata.name.attrs"
+        v-on="schemata.name.listeners"
+        :errors="schemata.name.errors"
       />
       <AppCheckbox
         name="active"
         v-model="datum.active"
-        v-bind="schema.active.attrs"
-        v-on="schema.active.listeners"
-        :errors="schema.active.errors"
+        v-bind="schemata.active.attrs"
+        v-on="schemata.active.listeners"
+        :errors="schemata.active.errors"
       />
       <AppTextarea
         name="description"
         v-model="datum.description"
-        v-bind="schema.description.attrs"
-        v-on="schema.description.listeners"
-        :errors="schema.description.errors"
+        v-bind="schemata.description.attrs"
+        v-on="schemata.description.listeners"
+        :errors="schemata.description.errors"
       />
 
       <template #buttons>
@@ -43,31 +43,29 @@
     </div>
 
     <div class="cell padding">
-      <pre>{{ schema }}</pre>
+      <pre>{{ schemata }}</pre>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Datum, Schema } from 'app/env'
 
 import 'presentation/components/form'
-import { schemata, data } from 'src/General/Category/Schema/Category'
+import { createSchemata, createDatum } from 'src/General/Category/Schema/Category'
 import { useAddCategory } from './services'
 
 export default defineComponent({
   name: 'CategoryForm',
   setup () {
-    const datum: Datum = data()
+    const datum = createDatum()
+    const schemata = createSchemata(datum)
 
-    const schema: Record<string, Schema> = schemata(datum)
-
-    const addCategory = useAddCategory(schema)
+    const addCategory = useAddCategory(schemata)
 
     return {
       datum,
-      schema,
+      schemata,
       addCategory
     }
   }

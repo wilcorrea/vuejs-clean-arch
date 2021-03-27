@@ -4,7 +4,7 @@ import { Datum, Schema } from 'app/env'
 /**
  * @return {Record<string, Schema>}
  */
-export const schemata = (datum: Datum): Record<string, Schema> => {
+export const createSchemata = (datum: Datum): Record<string, Schema> => {
   const name = create({
     label: 'Name',
     width: 80
@@ -32,7 +32,7 @@ export const schemata = (datum: Datum): Record<string, Schema> => {
 /**
  * @return {Datum}
  */
-export const data = (): Datum => {
+export const createDatum = (): Datum => {
   return observable({
     name: '',
     active: true,
