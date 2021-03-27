@@ -2,15 +2,15 @@ import { RouteComponent, RouteRecordRaw } from 'vue-router'
 import RouterRecord from './RouterRecord'
 
 /**
- * @class {Router}
+ * @class {RouteManager}
  */
-export default class Router {
+export default class RouteManager {
   private routes: RouteRecordRaw[] = []
 
   /**
-   * @return {Router}
+   * @return {RouteManager}
    */
-  static build (): Router {
+  static build (): RouteManager {
     return new this()
   }
 
@@ -44,8 +44,8 @@ export default class Router {
    * @param {(router: Router) => void} callback
    * @return {RouterRecord}
    */
-  group (path: string, component: RouteComponent, callback: (router: Router) => void): RouterRecord {
-    const router = Router.build()
+  group (path: string, component: RouteComponent, callback: (router: RouteManager) => void): RouterRecord {
+    const router = RouteManager.build()
     callback(router)
     const children = router.getRoutes()
     const options = {
@@ -60,9 +60,9 @@ export default class Router {
 
   /**
    * @param {Record<string, unknown>} source
-   * @return {Router}
+   * @return {RouteManager}
    */
-  register (source: Record<string, unknown>): Router {
+  register (source: Record<string, unknown>): RouteManager {
     this.routes.push(new RouterRecord(source))
     return this
   }

@@ -1,6 +1,6 @@
 import definitions from './setup'
 
-import Container from '../core/Container'
+import Container from './Container'
 import { ContainerDefinition } from '../env'
 
 let container: Container

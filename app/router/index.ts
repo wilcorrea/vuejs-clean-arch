@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Router from 'app/core/Router'
+import RouteManager from 'app/router/RouteManager'
 
 import home from 'routes/home'
 import dashboard from 'routes/dashboard'
 
-const router = Router.build()
+const router = RouteManager.build()
 
 home(router)
 dashboard(router)

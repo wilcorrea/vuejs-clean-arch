@@ -1,13 +1,13 @@
-import Router from 'app/core/Router'
+import RouteManager from 'app/router/RouteManager'
 
 /**
- * @param {Router} router
+ * @param {RouteManager} router
  */
-export default function (router: Router): void {
+export default function (router: RouteManager): void {
   router
     .route('/dashboard', () => import('presentation/modules/Dashboard/DashboardLayout.vue'))
     .setName('dashboard')
-    .addChildren(function (router: Router) {
+    .addChildren(function (router: RouteManager) {
       router.on('', () => import('presentation/views/dashboard/category/CategoryForm.vue'))
     })
 }

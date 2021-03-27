@@ -1,6 +1,6 @@
 import AddCategory from 'src/General/Category/UseCases/AddCategory'
 
-import Container from '../core/Container'
+import Container from './Container'
 
 /**
  * @param {Container} container
