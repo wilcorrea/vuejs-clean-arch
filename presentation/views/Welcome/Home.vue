@@ -1,14 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img
+      alt="Vue logo"
+      src="../../assets/logo.png"
+    >
 
-    <HelloWorld message="Welcome to Your Vue.js + TypeScript App"/>
+    <HelloWorld message="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import HelloWorld from 'presentation/components/HelloWorld.vue'
+import HelloWorld from 'presentation/modules/Welcome/components/HelloWorld.vue'
 
 @Options({
   name: 'Home',

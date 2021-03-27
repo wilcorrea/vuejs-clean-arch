@@ -1,9 +1,17 @@
 <template>
-  <div id="HomeLayout">
+  <div id="WelcomeLayout">
     <div id="nav">
-      <RouterLink to="/">Home</RouterLink>
-      |
-      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/">
+        <span>Home</span>
+      </RouterLink>
+      <span> | </span>
+      <RouterLink to="/about">
+        <span>About</span>
+      </RouterLink>
+      <span> | </span>
+      <RouterLink to="/sign-in">
+        <span>Sign In</span>
+      </RouterLink>
     </div>
     <RouterView />
   </div>
@@ -11,12 +19,15 @@
 
 <script>
 export default {
-  name: 'HomeLayout'
+  name: 'WelcomeLayout'
 }
 </script>
 
-<style lang="scss">
-#HomeLayout {
+<style
+  lang="scss"
+  scoped
+>
+#WelcomeLayout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
