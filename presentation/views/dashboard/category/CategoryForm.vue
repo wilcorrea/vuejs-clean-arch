@@ -53,7 +53,7 @@ import { defineComponent } from 'vue'
 
 import 'presentation/components/form'
 import { createSchemata, createDatum } from 'src/General/Category/Schema/Category'
-import { useAddCategory } from './services'
+import { useAddCategory } from './controller'
 
 export default defineComponent({
   name: 'CategoryForm',

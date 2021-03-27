@@ -6,13 +6,13 @@ import AppCheckbox from 'presentation/components/Input/AppCheckbox.vue'
 import AppTextarea from 'presentation/components/Input/AppTextarea.vue'
 import AppButton from 'presentation/components/Button/AppButton.vue'
 
-let done = false
-if (!done) {
+let registered = false
+if (!registered) {
   app.component('AppForm', AppForm)
   app.component('AppText', AppText)
   app.component('AppCheckbox', AppCheckbox)
   app.component('AppTextarea', AppTextarea)
   app.component('AppButton', AppButton)
 
-  done = true
+  registered = true
 }

@@ -62,7 +62,7 @@ export default class Container {
    * @param {string} alias
    * @return {unknown}
    */
-  async resolve (alias: string): Promise<unknown> {
+  async resolveDefinition (alias: string): Promise<unknown> {
     const definition = this.definitions[alias]
     if (!definition) {
       return null

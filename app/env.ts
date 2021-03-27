@@ -22,11 +22,6 @@ export type ContainerDefinition<T> = ((container: T) => Promise<unknown>) | stri
 export type ContainerProperty<T> = ((container: T) => void) | unknown
 
 /**
- * @typedef {Datum}
- */
-export type Datum = Record<string, unknown>
-
-/**
  * @typedef {ErrorInfoDetail}
  */
 export type ErrorInfoDetail = {
@@ -41,6 +36,11 @@ export type ErrorInfo = {
   field: string
   errors: ErrorInfoDetail[]
 }
+
+/**
+ * @typedef {Datum}
+ */
+export type Datum = Record<string, unknown>
 
 /**
  * @typedef {Schema}

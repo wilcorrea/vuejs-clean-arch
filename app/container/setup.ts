@@ -11,7 +11,7 @@ export default function (container: Container): void {
   container.addDefinition('CategoryRepository', () => import('src/General/Category/Adapters/Http/CategoryRepository'))
 
   container.addDefinition('AddCategory', async function (container: Container): Promise<unknown> {
-    const CategoryRepository = await container.resolve('CategoryRepository')
+    const CategoryRepository = await container.resolveDefinition('CategoryRepository')
     // @ts-ignore
     return new AddCategory(new CategoryRepository())
   })

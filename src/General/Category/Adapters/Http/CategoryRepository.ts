@@ -1,5 +1,6 @@
-import Category from '../../Domain/Category'
+import ValidationError from 'app/exceptions/ValidationError'
 
+import Category from '../../Domain/Category'
 import CategoryRepositoryInterface from '../../Contracts/CategoryRepository'
 
 /**
@@ -7,11 +8,14 @@ import CategoryRepositoryInterface from '../../Contracts/CategoryRepository'
  */
 export default class CategoryRepository implements CategoryRepositoryInterface {
   /**
-   * @param {Category} datum
+   * @param {Category} category
    * @return {boolean}
    */
-  create (datum: Category): boolean {
-    console.log('~> datum', datum)
+  create (category: Category): boolean {
+    if (!category.name) {
+      throw new ValidationError('name', 'required')
+    }
+    console.log('~> category', category)
     return true
   }
 }

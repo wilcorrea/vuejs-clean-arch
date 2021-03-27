@@ -1,4 +1,4 @@
-import definitions from './definitions'
+import definitions from './setup'
 
 import Container from '../core/Container'
 import { ContainerDefinition } from '../env'
@@ -27,7 +27,7 @@ export function get (property: string): unknown {
  * @return {unknown}
  */
 export function resolve (alias: string): unknown {
-  return instance().resolve(alias)
+  return instance().resolveDefinition(alias)
 }
 
 /**

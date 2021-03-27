@@ -1,4 +1,4 @@
-import { ErrorInfo } from '../env'
+import { ErrorInfo, ErrorInfoDetail } from '../env'
 
 /**
  * @class {ValidationError}
@@ -10,12 +10,23 @@ export default class ValidationError extends Error {
   private errors: ErrorInfo[]
 
   /**
-   * @param {ErrorInfo[]} errors
+   * @param {string} field
+   * @param {string} message
+   * @param {unknown} value
    */
-  constructor (errors: ErrorInfo[]) {
+  constructor (field: string, message: string, value?: unknown) {
     super('ValidationError')
 
-    this.errors = errors
+    const error: ErrorInfoDetail = {
+      message,
+      value
+    }
+    this.errors = [
+      {
+        field,
+        errors: [error]
+      }
+    ]
   }
 
   /**

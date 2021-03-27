@@ -2,6 +2,7 @@ import { create, observable } from 'app/ui/schema'
 import { Datum, Schema } from 'app/env'
 
 /**
+ * @param {Datum} datum
  * @return {Record<string, Schema>}
  */
 export const createSchemata = (datum: Datum): Record<string, Schema> => {

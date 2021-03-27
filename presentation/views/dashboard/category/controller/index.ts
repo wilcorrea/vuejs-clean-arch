@@ -1,4 +1,4 @@
-import { resolve } from 'app/container/resources'
+import { resolve } from 'app/container/instance'
 import { ErrorInfo, Schema } from 'app/env'
 import { reset } from 'app/ui/schema'
 
