@@ -1,5 +1,5 @@
 import { RouteComponent, RouteRecordRaw } from 'vue-router'
-import RouterRecord from './RouterRecord'
+import RouteDefinition from './RouteDefinition'
 
 /**
  * @class {RouteManager}
@@ -17,14 +17,14 @@ export default class RouteManager {
   /**
    * @param {string} path
    * @param {RouteComponent} component
-   * @return {RouterRecord}
+   * @return {RouteDefinition}
    */
-  on (path: string, component: RouteComponent): RouterRecord {
+  on (path: string, component: RouteComponent): RouteDefinition {
     const options = {
       path,
       component
     }
-    const route = new RouterRecord(options)
+    const route = new RouteDefinition(options)
     this.routes.push(route)
     return route
   }
@@ -32,9 +32,9 @@ export default class RouteManager {
   /**
    * @param {string} path
    * @param {RouteComponent} component
-   * @return {RouterRecord}
+   * @return {RouteDefinition}
    */
-  route (path: string, component: RouteComponent): RouterRecord {
+  route (path: string, component: RouteComponent): RouteDefinition {
     return this.on(path, component)
   }
 
@@ -42,9 +42,9 @@ export default class RouteManager {
    * @param {string} path
    * @param {RouteComponent} component
    * @param {(router: Router) => void} callback
-   * @return {RouterRecord}
+   * @return {RouteDefinition}
    */
-  group (path: string, component: RouteComponent, callback: (router: RouteManager) => void): RouterRecord {
+  group (path: string, component: RouteComponent, callback: (router: RouteManager) => void): RouteDefinition {
     const router = RouteManager.build()
     callback(router)
     const children = router.getRoutes()
@@ -53,7 +53,7 @@ export default class RouteManager {
       component,
       children
     }
-    const route = new RouterRecord(options)
+    const route = new RouteDefinition(options)
     this.routes.push(route)
     return route
   }
@@ -63,7 +63,7 @@ export default class RouteManager {
    * @return {RouteManager}
    */
   register (source: Record<string, unknown>): RouteManager {
-    this.routes.push(new RouterRecord(source))
+    this.routes.push(new RouteDefinition(source))
     return this
   }
 

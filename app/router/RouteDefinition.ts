@@ -10,7 +10,7 @@ import RouteManager from './RouteManager'
 
 /**
  */
-export default class RouterRecord {
+export default class RouteDefinition {
   /**
    * Path of the record. Should start with `/` unless the record is the child of
    * another record.
@@ -93,7 +93,7 @@ export default class RouterRecord {
    * @param {(callback: (router: RouteManager) => void} callback
    * @return {this}
    */
-  addChildren (callback: (router: RouteManager) => void): RouterRecord {
+  addChildren (callback: (router: RouteManager) => void): RouteDefinition {
     const router = RouteManager.build()
     callback(router)
     const children = router.getRoutes()
@@ -112,7 +112,7 @@ export default class RouterRecord {
    * @param {string} path
    * @return {this}
    */
-  setPath (path: string): RouterRecord {
+  setPath (path: string): RouteDefinition {
     this.path = path
     return this
   }
@@ -128,7 +128,7 @@ export default class RouterRecord {
    * @param {RouteComponent} component
    * @return {this}
    */
-  setComponent (component: RouteComponent): RouterRecord {
+  setComponent (component: RouteComponent): RouteDefinition {
     this.component = component
     return this
   }
@@ -144,7 +144,7 @@ export default class RouterRecord {
    * @param {RouteRecordRedirectOption} redirect
    * @return {this}
    */
-  setRedirect (redirect: RouteRecordRedirectOption): RouterRecord {
+  setRedirect (redirect: RouteRecordRedirectOption): RouteDefinition {
     this.redirect = redirect
     return this
   }
@@ -160,7 +160,7 @@ export default class RouterRecord {
    * @param {RouteRecordRaw} children
    * @return {this}
    */
-  setChildren (children: RouteRecordRaw[]): RouterRecord {
+  setChildren (children: RouteRecordRaw[]): RouteDefinition {
     this.children = children
     return this
   }
@@ -176,7 +176,7 @@ export default class RouterRecord {
    * @param {string} alias
    * @return {this}
    */
-  setAlias (alias: string | string[]): RouterRecord {
+  setAlias (alias: string | string[]): RouteDefinition {
     this.alias = alias
     return this
   }
@@ -192,7 +192,7 @@ export default class RouterRecord {
    * @param {RouteRecordName} name
    * @return {this}
    */
-  setName (name: RouteRecordName): RouterRecord {
+  setName (name: RouteRecordName): RouteDefinition {
     this.name = name
     return this
   }
@@ -208,7 +208,7 @@ export default class RouterRecord {
    * @param {NavigationGuardWithThis} beforeEnter
    * @return {this}
    */
-  setBeforeEnter (beforeEnter: NavigationGuardWithThis<undefined> | NavigationGuardWithThis<undefined>[]): RouterRecord {
+  setBeforeEnter (beforeEnter: NavigationGuardWithThis<undefined> | NavigationGuardWithThis<undefined>[]): RouteDefinition {
     this.beforeEnter = beforeEnter
     return this
   }
@@ -224,7 +224,7 @@ export default class RouterRecord {
    * @param {RouteMeta} meta
    * @return {this}
    */
-  setMeta (meta: RouteMeta): RouterRecord {
+  setMeta (meta: RouteMeta): RouteDefinition {
     this.meta = meta
     return this
   }

@@ -16,7 +16,7 @@ export const createSchemata = (datum: Datum): Record<string, Schema> => {
     width: 20
   }).on('change', function () {
     datum.description = datum.active ? 'now is active' : 'now is not'
-    active.attrs.label = datum.active ? 'Now is active' : 'Now is not'
+    description.attrs.label = datum.active ? 'Now is active' : 'Now is not'
   })
 
   const description = create({
