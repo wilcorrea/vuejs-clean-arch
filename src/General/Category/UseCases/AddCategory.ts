@@ -1,4 +1,4 @@
-import { Datum, Schema } from 'app/env'
+import { Datum, Schema } from 'app/definitions'
 
 import CategoryRepository from '../Contracts/CategoryRepository'
 

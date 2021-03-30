@@ -1,4 +1,4 @@
-import { ErrorInfo, ErrorInfoDetail } from '../env'
+import { ErrorInfo, ErrorInfoDetail } from '../../definitions'
 
 /**
  * @class {ValidationError}

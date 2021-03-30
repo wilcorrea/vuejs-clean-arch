@@ -1,16 +1,14 @@
-import definitions from './setup'
+import DependencyManager from '../kernel/Container/DependencyManager'
+import { ContainerDefinition } from '../definitions'
 
-import Container from './Container'
-import { ContainerDefinition } from '../env'
-
-let container: Container
+let container: DependencyManager
 
 /**
  * @param {string} property
  * @param {ContainerDefinition} value
- * @return {Container}
+ * @return {DependencyManager}
  */
-export function set (property: string, value: ContainerDefinition<Container>): Container {
+export function set (property: string, value: ContainerDefinition<DependencyManager>): DependencyManager {
   return instance().set(property, value)
 }
 
@@ -31,12 +29,11 @@ export function resolve (alias: string): unknown {
 }
 
 /**
- * @return {Container}
+ * @return {DependencyManager}
  */
-export function instance (): Container {
+export function instance (): DependencyManager {
   if (!container) {
-    container = new Container()
-    definitions(container)
+    container = new DependencyManager()
   }
   return container
 }

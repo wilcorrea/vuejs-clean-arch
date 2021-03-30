@@ -1,5 +1,5 @@
 import { create, observable } from 'app/ui/schema'
-import { Datum, Schema } from 'app/env'
+import { Datum, Schema } from 'app/definitions'
 
 /**
  * @param {Datum} datum

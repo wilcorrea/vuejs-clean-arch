@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import RouteManager from 'app/router/RouteManager'
+import RouteManager from 'app/kernel/Routing/RouteManager'
 
 import home from 'routes/home'
 import dashboard from 'routes/dashboard'

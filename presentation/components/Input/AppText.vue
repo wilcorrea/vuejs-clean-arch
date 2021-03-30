@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { UserEvent } from 'app/env'
+import { UserEvent } from 'app/definitions'
 import { classNames, id } from './helper'
 
 export default defineComponent({

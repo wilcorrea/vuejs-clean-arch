@@ -19,7 +19,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { classNames, id } from './helper'
-import { UserEvent } from '../../../app/env'
+import { UserEvent } from '../../../app/definitions'
 
 export default defineComponent({
   name: 'AppTextarea',

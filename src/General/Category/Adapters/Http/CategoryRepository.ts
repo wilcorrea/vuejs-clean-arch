@@ -1,4 +1,4 @@
-import ValidationError from 'app/exceptions/ValidationError'
+import ValidationError from 'app/kernel/Exceptions/ValidationError'
 
 import Category from '../../Domain/Category'
 import CategoryRepositoryInterface from '../../Contracts/CategoryRepository'

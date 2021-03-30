@@ -1,5 +1,5 @@
-import { resolve } from 'app/dependecies/instance'
-import { ErrorInfo, Schema } from 'app/env'
+import { resolve } from 'app/container/index'
+import { ErrorInfo, Schema } from 'app/definitions'
 import { reset } from 'app/ui/schema'
 
 import AddCategory from 'src/General/Category/UseCases/AddCategory'

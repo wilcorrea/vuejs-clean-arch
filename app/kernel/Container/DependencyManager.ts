@@ -1,13 +1,13 @@
-import { ContainerDefinition, ContainerProperty } from '../env'
+import { ContainerDefinition, ContainerProperty } from '../../definitions'
 
 /**
- * @class {Container}
+ * @class {DependencyManager}
  */
-export default class Container {
+export default class DependencyManager {
   /**
    * @type {Record<string, string>}
    */
-  private definitions: Record<string, ContainerDefinition<Container>> = {}
+  private definitions: Record<string, ContainerDefinition<DependencyManager>> = {}
 
   /**
    * @type {Record<string, string>}
@@ -15,9 +15,9 @@ export default class Container {
   private properties: Record<string, unknown> = {}
 
   /**
-   * @return {Container}
+   * @return {DependencyManager}
    */
-  static create (): Container {
+  static create (): DependencyManager {
     return new this()
   }
 
@@ -26,7 +26,7 @@ export default class Container {
    * @param {(container: Container) => void | unknown} value
    * @return this
    */
-  set (property: string, value: ContainerProperty<Container>): this {
+  set (property: string, value: ContainerProperty<DependencyManager>): this {
     this.properties[property] = value
     return this
   }
@@ -44,7 +44,7 @@ export default class Container {
    * @param {string} target
    * @return this
    */
-  addDefinition (alias: string, target: ContainerDefinition<Container>): this {
+  addDefinition (alias: string, target: ContainerDefinition<DependencyManager>): this {
     this.definitions[alias] = target
     return this
   }

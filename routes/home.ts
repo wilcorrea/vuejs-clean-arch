@@ -1,4 +1,4 @@
-import RouteManager from 'app/router/RouteManager'
+import RouteManager from 'app/kernel/Routing/RouteManager'
 
 /**
  * @param {RouteManager} router

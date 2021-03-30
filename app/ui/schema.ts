@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { Schema, UserEvent } from '../env'
+import { Schema, UserEvent } from '../definitions'
 
 /**
  * @param {Record<string, unknown>} attrs

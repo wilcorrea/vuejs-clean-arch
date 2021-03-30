@@ -20,7 +20,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { id, classNames } from './helper'
-import { UserEvent } from '../../../app/env'
+import { UserEvent } from '../../../app/definitions'
 
 export default defineComponent({
   name: 'AppCheckbox',
