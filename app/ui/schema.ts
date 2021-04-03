@@ -23,6 +23,30 @@ export function create (attrs: Record<string, unknown>): Schema {
 }
 
 /**
+ * @param {Record<string,unknown>} attrs
+ * @return {Schema}
+ */
+export function createText (attrs: Record<string, unknown>): Schema {
+  return create({ ...attrs, as: 'text' })
+}
+
+/**
+ * @param {Record<string,unknown>} attrs
+ * @return {Schema}
+ */
+export function createCheckbox (attrs: Record<string, unknown>): Schema {
+  return create({ ...attrs, as: 'checkbox' })
+}
+
+/**
+ * @param {Record<string,unknown>} attrs
+ * @return {Schema}
+ */
+export function createTextarea (attrs: Record<string, unknown>): Schema {
+  return create({ ...attrs, as: 'textarea' })
+}
+
+/**
  * @param {Record<string, Schema>} schemata
  * @return void
  */

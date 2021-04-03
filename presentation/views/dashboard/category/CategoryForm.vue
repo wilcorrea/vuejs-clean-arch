@@ -1,21 +1,21 @@
 <template>
   <div class="CategoryForm container is-max-desktop">
     <AppForm @submit.prevent="addCategory(datum)">
-      <AppText
+      <AppField
         name="name"
         v-model="datum.name"
         v-bind="schemata.name.attrs"
         v-on="schemata.name.listeners"
         :errors="schemata.name.errors"
       />
-      <AppCheckbox
+      <AppField
         name="active"
         v-model="datum.active"
         v-bind="schemata.active.attrs"
         v-on="schemata.active.listeners"
         :errors="schemata.active.errors"
       />
-      <AppTextarea
+      <AppField
         name="description"
         v-model="datum.description"
         v-bind="schemata.description.attrs"

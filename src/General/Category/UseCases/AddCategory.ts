@@ -2,6 +2,9 @@ import { Datum, Schema } from 'app/definitions'
 
 import CategoryRepository from '../Contracts/CategoryRepository'
 
+/**
+ * @class {AddCategory}
+ */
 export default class AddCategory {
   /**
    * @param {CategoryRepository} repository

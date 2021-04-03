@@ -1,4 +1,4 @@
-import AddCategory from '@/General/Category/UseCases/AddCategory'
+import AddCategory from 'src/General/Category/UseCases/AddCategory'
 
 import DependencyManager from './kernel/Container/DependencyManager'
 
@@ -8,7 +8,7 @@ import DependencyManager from './kernel/Container/DependencyManager'
 export default function (container: DependencyManager): void {
   container.set('http', () => undefined)
 
-  container.addDefinition('CategoryRepository', () => import('@/General/Category/Adapters/Http/CategoryRepository'))
+  container.addDefinition('CategoryRepository', () => import('src/General/Category/Adapters/Http/CategoryRepository'))
 
   container.addDefinition('AddCategory', async function (container: DependencyManager): Promise<unknown> {
     const CategoryRepository = await container.resolveDefinition('CategoryRepository')

@@ -1,4 +1,4 @@
-import { create, observable } from 'app/ui/schema'
+import { create, createText, createCheckbox, observable } from 'app/ui/schema'
 import { Datum, Schema } from 'app/definitions'
 
 /**
@@ -6,12 +6,12 @@ import { Datum, Schema } from 'app/definitions'
  * @return {Record<string, Schema>}
  */
 export const createSchemata = (datum: Datum): Record<string, Schema> => {
-  const name = create({
+  const name = createText({
     label: 'Name',
     width: 80
   })
 
-  const active = create({
+  const active = createCheckbox({
     label: 'Active',
     width: 20
   }).on('change', function () {
@@ -19,7 +19,12 @@ export const createSchemata = (datum: Datum): Record<string, Schema> => {
     description.attrs.label = datum.active ? 'Now is active' : 'Now is not'
   })
 
+  // const description = createTextarea({
+  //   label: 'Description'
+  // })
+
   const description = create({
+    as: 'textarea',
     label: 'Description'
   })
 
