@@ -6,8 +6,12 @@
   />
 </template>
 
-<script lang="js">
-export default {
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+
+/**
+ */
+export default defineComponent({
   /**
    */
   name: 'AppField',
@@ -20,23 +24,18 @@ export default {
     }
   },
   /**
+   * @param {Record<string,unknown>} props
    */
-  computed: {
-    /**
-     * @return {string}
-     */
-    is () {
+  setup (props) {
+    const is = computed(() => {
       const components = {
         text: 'AppText',
         checkbox: 'AppCheckbox',
         textarea: 'AppTextarea'
       }
-      return components[this.as] ?? components.text
-    }
+      return components[props.as] ?? components.text
+    })
+    return { is }
   }
-}
+})
 </script>
-
-<style scoped>
-
-</style>

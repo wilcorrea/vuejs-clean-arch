@@ -16,6 +16,7 @@ if (!registered) {
   app.component('AppText', AppText)
   app.component('AppCheckbox', AppCheckbox)
   app.component('AppTextarea', AppTextarea)
+
   app.component('AppButton', AppButton)
 
   registered = true
