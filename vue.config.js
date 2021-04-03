@@ -18,10 +18,11 @@ module.exports = {
       alias: {
         '@': path.resolve(__dirname, 'app'),
         app: path.resolve(__dirname, 'app'),
+        infra: path.resolve(__dirname, 'infra'),
         modules: path.resolve(__dirname, 'modules'),
-        routes: path.resolve(__dirname, 'routes'),
         presentation: path.resolve(__dirname, 'presentation'),
-        src: path.resolve(__dirname, 'src')
+        routes: path.resolve(__dirname, 'routes'),
+        source: path.resolve(__dirname, 'source')
       }
     }
   }

@@ -47,15 +47,7 @@ export function createTextarea (attrs: Record<string, unknown>): Schema {
 }
 
 /**
- * @param {Record<string, Schema>} schemata
- * @return void
- */
-export function reset (schemata: Record<string, Schema>): void {
-  Object.values(schemata).forEach((schema) => schema.errors = [])
-}
-
-/**
  * @param {Record<string, unknown>} payload
  * @return {Record<string, unknown>}
  */
-export const observable = (payload: Record<string, unknown>) => reactive(payload)
+export const observable = (payload: Record<string, unknown>): Record<string, unknown> => reactive(payload)

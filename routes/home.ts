@@ -9,13 +9,13 @@ export default function (router: RouteManager): void {
     .setName('home')
     .addChildren(function (router: RouteManager) {
       router
-        .on('/', () => import('presentation/views/welcome/Home.vue'))
+        .on('/', () => import('presentation/modules/Welcome/views/Home.vue'))
         .setName('home.index')
       router
-        .on('/about', () => import('presentation/views/welcome/About.vue'))
+        .on('/about', () => import('presentation/modules/Welcome/views/About.vue'))
         .setName('home.about')
       router
-        .on('/sign-in', () => import('presentation/views/welcome/SignIn.vue'))
+        .on('/sign-in', () => import('presentation/modules/Welcome/views/SignIn.vue'))
         .setName('home.sign-in')
     })
 }

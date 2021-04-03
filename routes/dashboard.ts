@@ -8,6 +8,6 @@ export default function (router: RouteManager): void {
     .route('/dashboard', () => import('presentation/modules/Dashboard/DashboardLayout.vue'))
     .setName('dashboard')
     .addChildren(function (router: RouteManager) {
-      router.on('', () => import('presentation/views/dashboard/category/CategoryForm.vue'))
+      router.on('', () => import('presentation/modules/Dashboard/views/category/CategoryForm.vue'))
     })
 }

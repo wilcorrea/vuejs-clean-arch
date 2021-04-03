@@ -22,19 +22,11 @@ export type ContainerDefinition<T> = ((container: T) => Promise<unknown>) | stri
 export type ContainerProperty<T> = ((container: T) => void) | unknown
 
 /**
- * @typedef {ErrorInfoDetail}
+ * @typedef {ErrorDetail}
  */
-export type ErrorInfoDetail = {
+export type ErrorDetail = {
   message: string
   value?: unknown
-}
-
-/**
- * @typedef {ErrorInfo}
- */
-export type ErrorInfo = {
-  field: string
-  errors: ErrorInfoDetail[]
 }
 
 /**
@@ -48,6 +40,57 @@ export type Datum = Record<string, unknown>
 export type Schema = {
   attrs: Record<string, unknown>
   listeners: Record<string, ((event: Event | UserEvent<HTMLInputElement>) => void)[]>
-  errors: ErrorInfoDetail[]
-  on: (event: string, handler: (event: Event | UserEvent<HTMLInputElement>) => void) => Schema
+  on (event: string, handler: (event: Event | UserEvent<HTMLInputElement>) => void): Schema
+}
+
+/**
+ * @typedef {Schemata}
+ */
+export type Schemata = Record<string, Schema>
+
+/**
+ * @typedef {HttpRequestConfig}
+ */
+export type HttpRequestConfig = Record<string, unknown>
+
+/**
+ * @typedef {HttpRestAnswer}
+ */
+export type HttpRestAnswer = {
+  status: string
+  value?: unknown
+  meta?: unknown
+}
+
+/**
+ * @typedef {HttpResponse}
+ */
+export interface HttpResponse<T = unknown> {
+  data: T
+  status: number
+  statusText: string
+  headers: unknown
+  config: HttpRequestConfig
+  request?: unknown
+}
+
+/**
+ * @typedef HttpClient
+ */
+export interface HttpClient {
+  request<T = unknown, R = HttpResponse<T>> (config: HttpRequestConfig): Promise<R>
+
+  get<T = unknown, R = HttpResponse<T>> (url: string, config?: HttpRequestConfig): Promise<R>
+
+  delete<T = unknown, R = HttpResponse<T>> (url: string, config?: HttpRequestConfig): Promise<R>
+
+  head<T = unknown, R = HttpResponse<T>> (url: string, config?: HttpRequestConfig): Promise<R>
+
+  options<T = unknown, R = HttpResponse<T>> (url: string, config?: HttpRequestConfig): Promise<R>
+
+  post<T = unknown, R = HttpResponse<T>> (url: string, data?: unknown, config?: HttpRequestConfig): Promise<R>
+
+  put<T = unknown, R = HttpResponse<T>> (url: string, data?: unknown, config?: HttpRequestConfig): Promise<R>
+
+  patch<T = unknown, R = HttpResponse<T>> (url: string, data?: unknown, config?: HttpRequestConfig): Promise<R>
 }

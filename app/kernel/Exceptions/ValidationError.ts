@@ -1,13 +1,13 @@
-import { ErrorInfo, ErrorInfoDetail } from '../../definitions'
+import { ErrorDetail } from '../../definitions'
 
 /**
  * @class {ValidationError}
  */
 export default class ValidationError extends Error {
   /**
-   * @type {ErrorInfo[]}
+   * @type {Record<string, ErrorDetail[]>}
    */
-  private errors: ErrorInfo[]
+  public readonly errors: Record<string, ErrorDetail[]> = {}
 
   /**
    * @param {string} field
@@ -17,31 +17,18 @@ export default class ValidationError extends Error {
   constructor (field: string, message: string, value?: unknown) {
     super('ValidationError')
 
-    const error: ErrorInfoDetail = {
-      message,
-      value
-    }
-    this.errors = [
+    this.errors[field] = [
       {
-        field,
-        errors: [error]
+        message,
+        value
       }
     ]
   }
 
   /**
-   * @return {this}
+   * @return {Record<string, ErrorDetail[]>}
    */
-  getErrors (): ErrorInfo[] {
+  getErrors (): Record<string, ErrorDetail[]> {
     return this.errors
-  }
-
-  /**
-   * @param {ErrorInfo[]} errors
-   * @return {this}
-   */
-  setErrors (errors: ErrorInfo[]): this {
-    this.errors = errors
-    return this
   }
 }
