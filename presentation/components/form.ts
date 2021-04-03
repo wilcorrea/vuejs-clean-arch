@@ -1,4 +1,4 @@
-import app from 'app/main'
+import { register } from 'app/ui/component'
 
 import AppForm from 'presentation/components/Container/AppForm.vue'
 import AppField from 'presentation/components/Container/AppField.vue'
@@ -8,16 +8,11 @@ import AppCheckbox from 'presentation/components/Input/AppCheckbox.vue'
 import AppTextarea from 'presentation/components/Input/AppTextarea.vue'
 import AppButton from 'presentation/components/Button/AppButton.vue'
 
-let registered = false
-if (!registered) {
-  app.component('AppForm', AppForm)
-  app.component('AppField', AppField)
+register('AppForm', AppForm)
+register('AppField', AppField)
 
-  app.component('AppText', AppText)
-  app.component('AppCheckbox', AppCheckbox)
-  app.component('AppTextarea', AppTextarea)
+register('AppText', AppText)
+register('AppCheckbox', AppCheckbox)
+register('AppTextarea', AppTextarea)
 
-  app.component('AppButton', AppButton)
-
-  registered = true
-}
+register('AppButton', AppButton)
