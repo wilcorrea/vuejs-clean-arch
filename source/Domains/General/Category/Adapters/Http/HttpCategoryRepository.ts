@@ -1,4 +1,4 @@
-import PersistenceError from 'app/kernel/Exceptions/PersistenceError'
+import ValidationErrors from 'app/kernel/Exceptions/ValidationErrors'
 
 import HttpRepository from 'source/Infra/Adapters/Http/HttpRepository'
 
@@ -38,7 +38,7 @@ export default class HttpCategoryRepository extends HttpRepository implements Ca
   async create (category: Category): Promise<string> {
     const errors = this.validator.validate(category)
     if (errors) {
-      throw new PersistenceError(errors)
+      throw new ValidationErrors(errors)
     }
 
     return this.add(category)

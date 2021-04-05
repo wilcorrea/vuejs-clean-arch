@@ -1,9 +1,9 @@
 import { ErrorScheme } from '../../definitions'
 
 /**
- * @class {PersistenceError}
+ * @class {ValidationErrors}
  */
-export default class PersistenceError extends Error {
+export default class ValidationErrors extends Error {
   /**
    * @type {ErrorScheme}
    */
@@ -13,7 +13,7 @@ export default class PersistenceError extends Error {
    * @param {ErrorScheme} errors
    */
   constructor (errors: ErrorScheme) {
-    super('PersistenceError')
+    super('ValidationErrors')
 
     this.errors = errors
   }

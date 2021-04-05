@@ -1,6 +1,6 @@
 import { Datum, HttpClient } from 'app/definitions'
 import { get } from 'app/container/index'
-import PersistenceError from 'app/kernel/Exceptions/PersistenceError'
+import PersistenceErrors from 'app/kernel/Exceptions/PersistenceErrors'
 import error from 'app/error'
 
 import Repository from '../Repository'
@@ -57,7 +57,7 @@ export default abstract class HttpRepository implements Repository {
       }
     }
 
-    throw new PersistenceError(errors)
+    throw new PersistenceErrors(errors)
   }
 
   /**
@@ -82,7 +82,7 @@ export default abstract class HttpRepository implements Repository {
       }
     }
 
-    throw new PersistenceError(errors)
+    throw new PersistenceErrors(errors)
   }
 
   /**
@@ -108,7 +108,7 @@ export default abstract class HttpRepository implements Repository {
       }
     }
 
-    throw new PersistenceError(errors)
+    throw new PersistenceErrors(errors)
   }
 
   /**
@@ -133,6 +133,6 @@ export default abstract class HttpRepository implements Repository {
       }
     }
 
-    throw new PersistenceError(errors)
+    throw new PersistenceErrors(errors)
   }
 }
