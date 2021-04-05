@@ -1,9 +1,9 @@
 import { Datum, Schemata } from 'app/definitions'
 
 /**
- * @interface {CategoryAddUseCase}
+ * @interface {UseCase}
  */
-export default interface CategoryAddUseCase {
+export default interface UseCase {
   /**
    * @param {Datum} datum
    * @param {Schemata} schemata

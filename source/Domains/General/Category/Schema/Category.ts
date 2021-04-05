@@ -1,5 +1,5 @@
 import { create, createCheckbox, createText, observable } from 'app/ui/schema'
-import { Datum, Schema } from 'app/definitions'
+import { Datum, ErrorScheme, Schema } from 'app/definitions'
 
 /**
  * @param {Datum} datum
@@ -56,9 +56,9 @@ export const createDatum = (): Datum => {
 }
 
 /**
- * @return {Record<string, unknown>}
+ * @return {ErrorScheme}
  */
-export const createErrors = (): Record<string, unknown> => {
+export const createErrors = (): ErrorScheme => {
   return observable({
     name: undefined,
     active: undefined,

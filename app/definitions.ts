@@ -30,6 +30,11 @@ export type ErrorDetail = {
 }
 
 /**
+ * @typedef {ErrorScheme}
+ */
+export type ErrorScheme = Record<string, ErrorDetail[] | unknown>
+
+/**
  * @typedef {Datum}
  */
 export type Datum = Record<string, unknown>

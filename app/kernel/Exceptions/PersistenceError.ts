@@ -1,27 +1,27 @@
-import { ErrorDetail } from '../../definitions'
+import { ErrorScheme } from '../../definitions'
 
 /**
  * @class {PersistenceError}
  */
 export default class PersistenceError extends Error {
   /**
-   * @type {Record<string, ErrorDetail[]>}
+   * @type {ErrorScheme}
    */
-  public readonly errors: Record<string, ErrorDetail[]> = {}
+  public readonly errors: ErrorScheme = {}
 
   /**
-   * @param {Record<string, ErrorDetail[]>} errors
+   * @param {ErrorScheme} errors
    */
-  constructor (errors: Record<string, ErrorDetail[]>) {
+  constructor (errors: ErrorScheme) {
     super('PersistenceError')
 
     this.errors = errors
   }
 
   /**
-   * @return {Record<string, ErrorDetail[]>}
+   * @return {ErrorScheme}
    */
-  getErrors (): Record<string, ErrorDetail[]> {
+  getErrors (): ErrorScheme {
     return this.errors
   }
 }

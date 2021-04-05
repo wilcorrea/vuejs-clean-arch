@@ -5,6 +5,7 @@
       <div class="component">
         <textarea
           class="textarea"
+          :class="{ 'is-danger': errors.length }"
           :id="id"
           :name="name"
           :value="modelValue"
@@ -45,6 +46,10 @@ export default defineComponent({
     width: {
       type: [String, Number],
       default: ''
+    },
+    errors: {
+      type: [Array],
+      default: () => []
     },
     rows: {
       type: [String, Number],

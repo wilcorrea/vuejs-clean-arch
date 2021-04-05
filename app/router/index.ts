@@ -2,12 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import RouteManager from 'app/kernel/Routing/RouteManager'
 
-import home from 'routes/home'
+import welcome from 'routes/welcome'
 import dashboard from 'routes/dashboard'
 
 const router = RouteManager.build()
 
-home(router)
+welcome(router)
 dashboard(router)
 
 const vueRouter = createRouter({

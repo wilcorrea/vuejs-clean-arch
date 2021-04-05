@@ -1,9 +1,10 @@
-import { Datum, HttpClient, HttpRestAnswer } from 'app/definitions'
-import { get } from 'app/container'
+import { Datum, HttpClient } from 'app/definitions'
+import { get } from 'app/container/index'
 import PersistenceError from 'app/kernel/Exceptions/PersistenceError'
 import error from 'app/error'
 
 import Repository from '../Repository'
+import { extractData } from './helper'
 
 /**
  * @class {HttpRepository}
@@ -26,10 +27,12 @@ export default abstract class HttpRepository implements Repository {
   abstract resource (): string
 
   /**
+   * @param {string} path
    * @return {string}
    */
-  protected getEndpoint (): string {
-    return this.resource()
+  protected path (path = ''): string {
+    const resource = this.resource()
+    return `${resource}/${path}`.replace(/\/\//g, '/')
   }
 
   /**
@@ -39,18 +42,94 @@ export default abstract class HttpRepository implements Repository {
   protected async add (datum: Datum): Promise<string> {
     let errors
     try {
-      const response = await this.http.post(this.getEndpoint(), datum)
-      const data = response.data as HttpRestAnswer
+      const response = await this.http.post(this.path(), datum)
+      const data = extractData(response)
       if (data.status === 'success') {
         return String(data.value)
       }
       errors = data?.meta
-    } catch (e) {
-      error(e)
+    } catch (exception) {
+      error(exception)
 
       // report error
-      if (e?.response) {
-        errors = e?.response?.data?.meta
+      if (exception?.response) {
+        errors = exception?.response?.data?.meta
+      }
+    }
+
+    throw new PersistenceError(errors)
+  }
+
+  /**
+   * @param {string | number} primaryKey
+   * @return {Promise<string>}
+   */
+  protected async read (primaryKey: string | number): Promise<string> {
+    let errors
+    try {
+      const response = await this.http.get(this.path(String(primaryKey)))
+      const data = extractData(response)
+      if (data.status === 'success') {
+        return String(data.value)
+      }
+      errors = data?.meta
+    } catch (exception) {
+      error(exception)
+
+      // report error
+      if (exception?.response) {
+        errors = exception?.response?.data?.meta
+      }
+    }
+
+    throw new PersistenceError(errors)
+  }
+
+  /**
+   * @param {string | number} primaryKey
+   * @param {Datum} datum
+   * @return {Promise<string>}
+   */
+  protected async set (primaryKey: string | number, datum: Datum): Promise<string> {
+    let errors
+    try {
+      const response = await this.http.patch(this.path(String(primaryKey)), datum)
+      const data = extractData(response)
+      if (data.status === 'success') {
+        return String(data.value)
+      }
+      errors = data?.meta
+    } catch (exception) {
+      error(exception)
+
+      // report error
+      if (exception?.response) {
+        errors = exception?.response?.data?.meta
+      }
+    }
+
+    throw new PersistenceError(errors)
+  }
+
+  /**
+   * @param {string | number} primaryKey
+   * @return {Promise<string>}
+   */
+  protected async remove (primaryKey: string | number): Promise<string> {
+    let errors
+    try {
+      const response = await this.http.delete(this.path(String(primaryKey)))
+      const data = extractData(response)
+      if (data.status === 'success') {
+        return String(data.value)
+      }
+      errors = data?.meta
+    } catch (exception) {
+      error(exception)
+
+      // report error
+      if (exception?.response) {
+        errors = exception?.response?.data?.meta
       }
     }
 

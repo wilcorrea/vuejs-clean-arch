@@ -1,14 +1,29 @@
-import ValidationError from 'app/kernel/Exceptions/ValidationError'
+import PersistenceError from 'app/kernel/Exceptions/PersistenceError'
 
 import HttpRepository from 'source/Infra/Adapters/Http/HttpRepository'
 
 import Category from '../../Domain/Category'
 import CategoryRepository from '../../Contracts/CategoryRepository'
+import CategoryValidation from '../../Domain/CategoryValidation'
 
 /**
  * @class {HttpCategoryRepository}
  */
 export default class HttpCategoryRepository extends HttpRepository implements CategoryRepository {
+  /**
+   * @type {CategoryValidation}
+   */
+  private validator: CategoryValidation
+
+  /**
+   * @param {CategoryValidation} validator
+   */
+  constructor (validator: CategoryValidation) {
+    super()
+
+    this.validator = validator
+  }
+
   /**
    * @return {string}
    */
@@ -21,8 +36,9 @@ export default class HttpCategoryRepository extends HttpRepository implements Ca
    * @return {Promise<string>}
    */
   async create (category: Category): Promise<string> {
-    if (!category.name) {
-      throw new ValidationError('name', 'required')
+    const errors = this.validator.validate(category)
+    if (errors) {
+      throw new PersistenceError(errors)
     }
 
     return this.add(category)

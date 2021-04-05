@@ -1,12 +1,12 @@
 import { Datum, Schema } from 'app/definitions'
 
 import CategoryRepository from '../Contracts/CategoryRepository'
-import CategoryAddUseCase from '../Contracts/CategoryAddUseCase'
+import UseCase from '../../../Shared/UseCase'
 
 /**
  * @class {AddCategory}
  */
-export default class AddCategory implements CategoryAddUseCase {
+export default class AddCategory implements UseCase {
   /**
    * @param {CategoryRepository} repository
    */
